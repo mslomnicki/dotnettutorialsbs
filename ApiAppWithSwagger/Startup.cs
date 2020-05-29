@@ -33,7 +33,7 @@ namespace ApiAppWithSwagger
             services.AddControllers();
 
             services.AddDbContext<ApiAppWithSwaggerContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ApiAppWithSwaggerContext")));
+                    options.UseSqlite(Configuration.GetConnectionString("ApiAppWithSwaggerContext")));
 
             services.AddSwaggerGen(options =>
             {

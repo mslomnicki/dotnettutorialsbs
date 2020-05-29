@@ -2,7 +2,7 @@
 
 namespace ApiAppWithSwagger.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,7 @@ namespace ApiAppWithSwagger.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     name = table.Column<string>(nullable: false),
                     value = table.Column<string>(nullable: true)
                 },
@@ -19,14 +19,6 @@ namespace ApiAppWithSwagger.Migrations
                 {
                     table.PrimaryKey("PK_TodoItem", x => x.Id);
                 });
-            migrationBuilder.InsertData(
-                "TodoItem",
-                new[] { "Id", "name", "value" },
-                    new object[] { 1, "Todo1", "value1" });
-            migrationBuilder.InsertData(
-                "TodoItem",
-                new[] { "Id", "name", "value" },
-                    new object[] { 2, "Todo2", "value2" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
